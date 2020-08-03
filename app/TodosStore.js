@@ -2,7 +2,7 @@
 
 const Store = require("electron-store");
 
-class DataStore extends Store {
+class TodosStore extends Store {
   constructor(settings) {
     super(settings);
     this.todos = this.get("todos") || [];
@@ -29,4 +29,4 @@ class DataStore extends Store {
   }
 }
 
-module.exports = DataStore;
+module.exports = TodosStore;

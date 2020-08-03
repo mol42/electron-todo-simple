@@ -4,9 +4,9 @@ const path = require("path");
 const { app, ipcMain } = require("electron");
 const { BrowserWindow } = require("electron");
 
-const DataStore = require("./TodosStore");
+const TodosStore = require("./TodosStore");
 
-const todosDB = new DataStore({ name: "Todos DB" });
+const todosDB = new TodosStore({ name: "Todos DB" });
 
 function main() {
   let mainWindow = new BrowserWindow({
