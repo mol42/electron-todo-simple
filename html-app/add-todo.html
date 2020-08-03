@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Electron Simple Todo</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="container-head">
+        Enter Todo Item
+      </div>
+      <div class="container-body">
+        <div class="todo-form">
+          <input type="text" class="todo-input" onchange="setTodoText(event)" />
+        </div>
+        <button class="primary-btn" onclick="saveTodo()">Todo Kaydet</button>
+      </div>
+    </div>
+
+    <script src="./add-todo.js"></script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "electron-todo-simple",
+  "version": "1.0.0",
+  "description": "A simple Electron todo app",
+  "main": "app/main.js",
+  "scripts": {
+    "start" : "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mol42/electron-todo-simple.git"
+  },
+  "keywords": [
+    "Electron",
+    "Todo",
+    "App"
+  ],
+  "author": "Tayfun YUGRUK",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mol42/electron-todo-simple/issues"
+  },
+  "homepage": "https://github.com/mol42/electron-todo-simple#readme",
+  "dependencies": {
+    "electron": "^9.1.2",
+    "electron-store": "^6.0.0"
+  }
+}
