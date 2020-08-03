@@ -6,42 +6,55 @@ const { BrowserWindow } = require("electron");
 
 const DataStore = require("./TodosStore");
 
-// create a new todo store name "Todos Main"
 const todosDB = new DataStore({ name: "Todos DB" });
 
 function main() {
   let mainWindow = new BrowserWindow({
     width: 500,
     height: 600,
-    // update for electron V5+
     webPreferences: {
       nodeIntegration: true
     }
   });
 
+  // kodun çoğu yerinde kullanacağımız için kısayol
+  // amacı ile mWebContents değişkenine
+  // mainWindow.webContents referansını aktarıyoruz.
+  let mWebContents = mainWindow.webContents;
+
   mainWindow.once("show", () => {
-    mainWindow.webContents.send("todos", todosDB.todos);
+    mWebContents.send("todos", todosDB.todos);
   });
 
+  // renderer tarafı "add-todo" eventi fırlatarak main tarafından
+  // todosDB'ye ekleme yapmasını talep eder.
+  // Ekleme sonrası main taraf "todos" eventi fırlatarak renderer
+  // tarafın todo listesini güncellemesini sağlar.
   ipcMain.on("add-todo", (event, todo) => {
     const updatedTodos = todosDB.addTodo(todo).todos;
 
-    mainWindow.send("todos", updatedTodos);
+    mWebContents.send("todos", updatedTodos);
   });
 
+  // renderer tarafı "delete-todo" eventi fırlatarak main tarafından
+  // todosDB'den silme yapmasını talep eder.
+  // Silme sonrası main taraf "todos" eventi fırlatarak renderer
+  // tarafın todo listesini güncellemesini sağlar.
   ipcMain.on("delete-todo", (event, todo) => {
     const updatedTodos = todosDB.deleteTodo(todo).todos;
 
-    mainWindow.send("todos", updatedTodos);
+    mWebContents.send("todos", updatedTodos);
   });
 
+  // renderer tarafı "load-todos" eventi fırlatarak main tarafından
+  // güncel todo listesini göndermesini talep eder.
   ipcMain.on("load-todos", (event, todo) => {
-    mainWindow.webContents.send("todos", todosDB.todos);
+    mWebContents.send("todos", todosDB.todos);
   });
 
   mainWindow.loadFile(path.join("html-app", "index.html"));
 
-  mainWindow.webContents.openDevTools();
+  mWebContents.openDevTools();
 }
 
 app.on("ready", main);
