@@ -1,20 +1,18 @@
 "use strict";
 
 const path = require("path");
-const { app, ipcMain } = require("electron");
-const { BrowserWindow } = require("electron");
+const { app, ipcMain, BrowserWindow } = require("electron");
 
 const TodosStore = require("./TodosStore");
-
-const todosDB = new TodosStore({ name: "Todos DB" });
+const todosDB = new TodosStore();
 
 function main() {
   let mainWindow = new BrowserWindow({
     width: 500,
     height: 600,
     webPreferences: {
-      nodeIntegration: true
-    }
+      nodeIntegration: true,
+    },
   });
 
   // kodun çoğu yerinde kullanacağımız için kısayol
