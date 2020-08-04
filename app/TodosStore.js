@@ -1,20 +1,21 @@
 "use strict";
 
 const Store = require("electron-store");
+// Store nesnesinden bir tane ornek yaratiyoruz
+const store = new Store();
 
-class TodosStore extends Store {
-  constructor(settings) {
-    super(settings);
-    this.todos = this.get("todos") || [];
+class TodosStore {
+  constructor() {
+    this.todos = store.get("todos") || [];
   }
 
   saveTodos() {
-    this.set("todos", this.todos);
+    store.set("todos", this.todos);
     return this;
   }
 
   getTodos() {
-    this.todos = this.get("todos") || [];
+    this.todos = store.get("todos") || [];
     return this;
   }
 

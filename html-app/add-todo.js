@@ -7,7 +7,6 @@ const state = {
 };
 
 function setTodoText(event) {
-  console.log(event);
   state.todoText = event.target.value;
 }
 
