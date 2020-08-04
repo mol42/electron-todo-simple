@@ -12,11 +12,22 @@
         <button class="primary-btn" onclick="openAddTodo()">Todo Ekle</button>
       </div>
       <div class="container-body">
+        <!-- 
+          "todos-list" listelenecek todo'ları göstereceğimiz HTML ul elementi,
+          HTML Dom api'si yardımı ile oluşturduğumuz html elementini ekranda göstereceğiz.
+        -->
         <ul id="todos-list">
         </ul>
       </div>
     </div>
 
+    <!-- 
+      HTML+CSS+JS'ye yeni arkadaşlar için özellikle belirteyim, burada yüklenen index.js  
+      içinde yaratılan değişkenler sadece index.html tarafından görünür çünkü chromium o anda
+      sadece index.html ile ilişkili dosyaları yükler ve işler başka sayfaya gidildiği zaman
+      (buradaki örnekte add-todo.html sayfasına gittiğimiz zaman) o sayfa ile ilişkili 
+      CSS ve JS'ler yüklenir.
+    -->
     <script src="./index.js"></script>
   </body>
 </html>

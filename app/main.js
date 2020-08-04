@@ -4,6 +4,8 @@ const path = require("path");
 const { app, ipcMain, BrowserWindow } = require("electron");
 
 const TodosStore = require("./TodosStore");
+// TodosStore bir class olduğu için new ile kodlarda
+// kullanılabilecek bir instance yaratırız.
 const todosDB = new TodosStore();
 
 function main() {
